@@ -1,0 +1,51 @@
+body {
+    background-color: #1a1a2e;
+    color: white;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .converter-box {
+    background: #16213e;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    width: 300px;
+  }
+  
+  .title {
+    font-size: 1.5rem;
+    color: #00aaff;
+    margin-bottom: 15px;
+  }
+  
+  .input-box {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+  }
+  
+  .output {
+    margin-top: 15px;
+    font-size: 1.2rem;
+  }
+  
+  .binary-result {
+    font-weight: bold;
+    color: #00ffaa;
+  }
