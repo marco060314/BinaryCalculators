@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./styles.css";
 
 export default function App() {
@@ -20,8 +20,9 @@ export default function App() {
       if (value) {
         let num = parseInt(value, 10);
         let bitLength = 4;
-        while (num >= Math.pow(2, bitLength)){
+        while (Math.abs(num) >= Math.pow(2, bitLength)){
           bitLength++;
+          console.log(bitLength);
         }
 
         let bin = new Array(bitLength);
@@ -49,10 +50,11 @@ export default function App() {
         setBinary(binaryValue);
         
         if (num < 0) {
-          let negativeNum = -1 * Math.pow(2, bitLength+1);
+          let negativeNum = -1 * Math.pow(2, bitLength);
+          console.log("aaaa", negativeNum, bitLength);
           n = Math.pow(2, bitLength);
-          bin = new Array(bitLength+1);
-          for (let i = 0; i <= bitLength; i++) {
+          bin = new Array(bitLength);
+          for (let i = 0; i < bitLength-1; i++) {
             if (negativeNum + n <= num) {
               bin[i] = 1;
               negativeNum += n;
@@ -97,6 +99,10 @@ export default function App() {
     }
   };
 
+  useEffect(() => {
+    handleBinaryChange({ target: { value: binaryInput } });
+  }, [isTwoComplement]);
+
   return (
     <div className="container">
       <div className="switch-mode">
@@ -130,8 +136,16 @@ export default function App() {
             className="input-box"
           />
           <p className="output">Decimal: <span className="binary-result">{decimalFromBinary || "-"}</span></p>
-          { isTwoComplement === 0 && <button onClick={() => setIsTwoComplement(1)}>Convert to Two's Complement</button>}
-          { isTwoComplement === 1 && <button onClick={() => setIsTwoComplement(0)}>Convert to Binary</button>}
+          {isTwoComplement === 0 && (
+            <button onClick={() => setIsTwoComplement(1)}>
+              Convert to Two's Complement
+            </button>
+          )}
+          {isTwoComplement === 1 && (
+            <button onClick={() => setIsTwoComplement(0)}>
+              Convert to Binary
+            </button>
+          )}
         </div>
       )}
     </div>
